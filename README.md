@@ -1,6 +1,5 @@
-<h1>random-person-api</h1>
-<hr>
-<br>
+# random-person-api
+
 <main>
   <p>API que entrega dados aleatórios sobre pessoas que (provavelmente) não existem.</p>
   <article>
@@ -35,6 +34,15 @@ empregada_ou_desempregada = resposta
 trabalha_ou_estuda_com = ['trabalha_ou_estuda_com']
    ```
    <p>Pronto! Você pegou todos as informações que a api forneçe</p>
+   <h3>Como instalar localmente?</h3>
+   Baixe o projeto no github e depois abra o seu terminal e digite:
+
+   ```
+   cd random-person-api
+   pip3 install -r requirements.txt
+   python3 main.py
+   ```
+  para encerrar o processo digite ``Ctrl + C`` ou ``Cmd + C``
   </article>
   <br>
   <hr>
