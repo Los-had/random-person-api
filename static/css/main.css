@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+*{
+  font-family: consolas, Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main{
+  border-radius: 5% 5%;
+  border: none;
+  /*margin-left: 250px;*/
+}
+
+main article.como_usar a.api_link{
+  color: blue;
+  text-decoration: none;
+}
+
+main article.como_usar a.api_link:hover{
+  text-decoration: underline;
+}
+
+main article.como_usar pre{
+  background-color: rgb(29, 26, 26);
+  color: white;
+}
