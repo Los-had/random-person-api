@@ -1,1 +1,2 @@
-window.alert('Em desenvolvimento!');
+//window.alert('Em desenvolvimento!');
+console.log('Em desenvolvimento!');

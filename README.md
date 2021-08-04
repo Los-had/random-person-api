@@ -49,6 +49,7 @@ trabalha_ou_estuda_com = ['trabalha_ou_estuda_com']
   <br>
   <footer>
     <p>Se sinta livre para contribuir, ainda em desenvolvimento na plataforma <a href="https://replit.com">Repl.it</a></p>
+    <p>Licença: <a href="LICENSE">MIT</a></p>
     <p>Links: <br><a href="htts://github.com/Los-had/random-person-api">GitHub</a> <br><a href="https://replit.com/@choccy-milk/random-person-api?v=1">Repl.it</a></p>
     <br><hr><br>
     <p>Made by Los-had with ❤</p>

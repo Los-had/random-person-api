@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
 import names
 from random import choice, randint
 import string
@@ -12,14 +12,15 @@ def generate_random_person():
   nome = names.get_full_name()
   estado_civil = ['Casado(a)', 'Solteiro(a)']
   idade = randint(13, 101)
-  profissão_ou_estudo = ['Medicina', 'Direito', 'Engenharia Civil', 'Arquitetura e Urbanismo', 'Relacoes Internacionais', 'Publicidade e Propaganda', 'Fisioterapia', 'Psicologia', 'Ciencia da Computacao', 'Nutricao']
+  profissão_ou_estudo = ['Medicina', 'Direito', 'Engenharia Civil', 'Arquitetura e Urbanismo', 'Relacoes Internacionais', 'Publicidade e Propaganda', 'Fisioterapia', 'Psicologia', 'Ciencia da Computacao', 'Nutricao', 'Historia', 'Matematica', 'Fisica', 'Ciencia']
 
   def generate_email():
     
     extensões_de_email = ['@gmail.com', '@outlook.com', '@hotmail.com']
     email = ''
     email += nome
-    email += '-'
+    opt2 = ['-', '.']
+    email += choice(opt2)
     caracteres = string.ascii_letters
     caracteres += string.digits
     for i in range(randint(1, 5)):
@@ -54,5 +55,9 @@ def index():
 @app.route('/api', methods=['GET'])
 def api():
   return generate_random_person()
+
+@app.route('/main')
+def goto_index():
+  return redirect('/')
 
 app.run(host='0.0.0.0', port=8080, debug=True)
