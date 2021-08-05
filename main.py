@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, redirect
 import names
 from random import choice, randint
 import string
+import datetime
 
 app = Flask(__name__)
 
@@ -15,6 +16,13 @@ def generate_random_person():
   idade_max = randint(60, 70)
   idade = randint(18, idade_max)
   profissão_ou_estudo = ['Medicina', 'Direito', 'Engenharia Civil', 'Arquitetura e Urbanismo', 'Relacoes Internacionais', 'Publicidade e Propaganda', 'Fisioterapia', 'Psicologia', 'Ciencia da Computacao', 'Nutricao', 'Historia', 'Matematica', 'Fisica', 'Ciencia']
+
+  def data_de_nascimento():
+
+    ano_atual = datetime.date.today()
+    data = ano_atual.year - idade
+
+    return f'Ano de nascimento: {str(data)}'
 
   def generate_email():
     
@@ -42,11 +50,11 @@ def generate_random_person():
     
     return senha
 
-  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises) }
+  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento() }
 
 
   if empregado_ou_desempregado == 'Desempregado(a)':
-    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises) }
+    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento() }
   
   return resposta_pronta
 
