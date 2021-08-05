@@ -7,6 +7,7 @@ import datetime
 
 def generate_random_person():
   
+  cores = ['Verde', 'Amarelo', 'Vermelho', 'Azul', 'Rosa', 'Marrom', 'Preto', 'Violeta']
   paises = ['China', 'India', 'Estados Unidos', 'Indonesia', 'Paquistao', 'Brasil', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico']
   opt = ['Empregado(a)', 'Desempregado(a)']
   empregado_ou_desempregado = choice(opt) 
@@ -49,10 +50,10 @@ def generate_random_person():
     
     return senha
 
-  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento() }
+  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento(), 'cor_favorita': choice(cores) }
 
 
   if empregado_ou_desempregado == 'Desempregado(a)':
-    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento() }
+    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento(), 'cor_favorita': choice(cores) }
   
   return resposta_pronta
