@@ -28,6 +28,8 @@ senha = resposta['senha']
 
 estado_civil = resposta['estado_civil']
 
+localizacao = resposta['localizacao']
+
 empregada_ou_desempregada = resposta
 ['empregado_ou_desempregado']
 

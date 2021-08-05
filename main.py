@@ -3,15 +3,17 @@ import names
 from random import choice, randint
 import string
 
-app = Flask('random-person-api')
+app = Flask(__name__)
 
 def generate_random_person():
   
+  paises = ['China', 'India', 'Estados Unidos', 'Indonesia', 'Paquistao', 'Brasil', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico']
   opt = ['Empregado(a)', 'Desempregado(a)']
   empregado_ou_desempregado = choice(opt) 
   nome = names.get_full_name()
   estado_civil = ['Casado(a)', 'Solteiro(a)']
-  idade = randint(13, 101)
+  idade_max = randint(60, 70)
+  idade = randint(18, idade_max)
   profissão_ou_estudo = ['Medicina', 'Direito', 'Engenharia Civil', 'Arquitetura e Urbanismo', 'Relacoes Internacionais', 'Publicidade e Propaganda', 'Fisioterapia', 'Psicologia', 'Ciencia da Computacao', 'Nutricao', 'Historia', 'Matematica', 'Fisica', 'Ciencia']
 
   def generate_email():
@@ -40,17 +42,20 @@ def generate_random_person():
     
     return senha
 
-  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado }
+  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises) }
 
 
   if empregado_ou_desempregado == 'Desempregado(a)':
-    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado }
+    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises) }
   
   return resposta_pronta
 
 @app.route('/')
 def index():
-  return render_template('index.html')
+  try:
+    return render_template('index.html')
+  except:
+    return redirect('/error')
 
 @app.route('/api', methods=['GET'])
 def api():
@@ -59,5 +64,9 @@ def api():
 @app.route('/main')
 def goto_index():
   return redirect('/')
+
+@app.route('/error')
+def error():
+  return render_template('error.html')
 
 app.run(host='0.0.0.0', port=8080, debug=True)
