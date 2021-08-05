@@ -3,6 +3,7 @@ import names
 from random import choice, randint
 import string
 import datetime
+from time import sleep
 
 app = Flask(__name__)
 
@@ -67,7 +68,14 @@ def index():
 
 @app.route('/api', methods=['GET'])
 def api():
-  return generate_random_person()
+  try:
+    return generate_random_person()
+  except Exception as e:
+    return e
+    sleep(0.5)
+    for r in range(15):
+      return f'Você sera redirencionado em {str(r)} segundos\r'
+    return redirect('/error')
 
 @app.route('/main')
 def goto_index():
