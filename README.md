@@ -33,6 +33,14 @@ localizacao = resposta['localizacao']
 empregada_ou_desempregada = resposta
 ['empregado_ou_desempregado']
 
+cor_favorita = resposta['cor_favorita']
+
+tipos_sanguineo = resposta['tipos_sanguineo']
+
+peso = resposta['peso']
+
+altura = resposta['altura']
+
 trabalha_ou_estuda_com = ['trabalha_ou_estuda_com']
    ```
    <p>Pronto! Você pegou todos as informações que a api forneçe</p>
