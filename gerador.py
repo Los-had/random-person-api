@@ -7,6 +7,7 @@ import datetime
 
 def generate_random_person():
   
+  tipos_sanguineos = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
   cores = ['Verde', 'Amarelo', 'Vermelho', 'Azul', 'Rosa', 'Marrom', 'Preto', 'Violeta']
   paises = ['China', 'India', 'Estados Unidos', 'Indonesia', 'Paquistao', 'Brasil', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico']
   opt = ['Empregado(a)', 'Desempregado(a)']
@@ -16,6 +17,22 @@ def generate_random_person():
   idade_max = randint(60, 70)
   idade = randint(18, idade_max)
   profissão_ou_estudo = ['Medicina', 'Direito', 'Engenharia Civil', 'Arquitetura e Urbanismo', 'Relacoes Internacionais', 'Publicidade e Propaganda', 'Fisioterapia', 'Psicologia', 'Ciencia da Computacao', 'Nutricao', 'Historia', 'Matematica', 'Fisica', 'Ciencia']
+
+  def calcular_altura():
+
+    min = 145
+    max = 200
+    altura = randint(min, max)
+
+    return f'Altura: {str(altura)}cm'
+
+  def calcular_peso():
+
+    min = 40
+    max = 170
+    peso = randint(min, max)
+
+    return f'Peso: {str(peso)}kg'
 
   def data_de_nascimento():
 
@@ -50,10 +67,10 @@ def generate_random_person():
     
     return senha
 
-  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento(), 'cor_favorita': choice(cores) }
+  resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': choice(profissão_ou_estudo), 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento(), 'cor_favorita': choice(cores), 'tipos_sanguineo': choice(tipos_sanguineos), 'peso': calcular_peso(), 'altura': calcular_altura() }
 
 
   if empregado_ou_desempregado == 'Desempregado(a)':
-    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento(), 'cor_favorita': choice(cores) }
+    resposta_pronta = { 'nome': nome, 'email': generate_email(), 'idade': idade, 'senha': generate_password(), 'estado_civil': choice(estado_civil), 'trabalha_ou_estuda_com': None, 'empregado_ou_desempregado': empregado_ou_desempregado, 'localizacao': choice(paises), 'ano_de_nascimento': data_de_nascimento(), 'cor_favorita': choice(cores), 'tipos_sanguineo': choice(tipos_sanguineos), 'peso': calcular_peso(), 'altura': calcular_altura() }
   
   return resposta_pronta
